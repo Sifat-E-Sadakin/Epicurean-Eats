@@ -6,6 +6,7 @@ import {
 import Home from './Layout/Home';
 import HomePage from './Pages/HomePage';
 import Menu from './Components/Menu';
+import MenuPage from './Pages/MenuPage';
 
 
 export const router = createBrowserRouter([
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
                 },
                 {
                   path: "/menu",
-                  element: <Menu></Menu>,
+                  element: <MenuPage></MenuPage>,
                 },
               ],
             },

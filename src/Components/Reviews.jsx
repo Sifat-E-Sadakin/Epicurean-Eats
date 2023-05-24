@@ -43,7 +43,7 @@ const Reviews = () => {
                                 <FaQuoteLeft className='text-7xl'></FaQuoteLeft>
                             </div>
                             <p>{item.details}</p>
-                            <h1 className='uppercase text-error text-3xl'>{item.name}</h1>
+                            <h1 className='uppercase text-error text-3xl '>{item.name}</h1>
                         </SwiperSlide>)
                     }
                 

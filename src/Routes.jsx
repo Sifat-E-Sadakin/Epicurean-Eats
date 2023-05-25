@@ -7,6 +7,7 @@ import Home from './Layout/Home';
 import HomePage from './Pages/HomePage';
 import Menu from './Components/Menu';
 import MenuPage from './Pages/MenuPage';
+import OrderPage from './Pages/OrderPage';
 
 
 export const router = createBrowserRouter([
@@ -19,8 +20,12 @@ export const router = createBrowserRouter([
                   element: <HomePage></HomePage>,
                 },
                 {
-                  path: "/menu",
+                  path: "menu",
                   element: <MenuPage></MenuPage>,
+                },
+                {
+                  path: "order/:category",
+                  element: <OrderPage></OrderPage>,
                 },
               ],
             },

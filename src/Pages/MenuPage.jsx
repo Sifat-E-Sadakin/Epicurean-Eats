@@ -19,26 +19,26 @@ const MenuPage = () => {
     let salad = menu.filter(item => item.category == 'salad')
     let soup = menu.filter(item => item.category == 'soup')
     let offered = menu.filter(item => item.category == 'offered')
-    
+
 
     return (
         <div>
-        <Helmet>
-            <title>Menu | Epicurean Eats</title>
-        </Helmet>
-        <Cover img={menuBg} title={'Our Menu'} subTitle={'would you like to try a dish?'}></Cover>
-        <SectionTitle title={'Todays Offer'} subTitle={"Don't Miss"}></SectionTitle>
-        <MenuAny item={offered}></MenuAny>
-        <Cover img={dessertBg} title={'desserts'} subTitle={' Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ex alias cupiditate distinctio pariatur itaque inventore aperiam, assumenda reiciendis molestiae?'}></Cover>
-        <MenuAny item={dessert}></MenuAny>
-        <Cover img={pizzaBg} title={'Pizza'} subTitle={' Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ex alias cupiditate distinctio pariatur itaque inventore aperiam, assumenda reiciendis molestiae?'}></Cover>
-        <MenuAny item={pizza}></MenuAny>
-        <Cover img={saladBg} title={'salad'} subTitle={' Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ex alias cupiditate distinctio pariatur itaque inventore aperiam, assumenda reiciendis molestiae?'}></Cover>
-        <MenuAny item={salad}></MenuAny>
-        <Cover img={soupBg} title={'soup'} subTitle={' Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ex alias cupiditate distinctio pariatur itaque inventore aperiam, assumenda reiciendis molestiae?'}></Cover>
-        <MenuAny item={soup}></MenuAny>
-       
-    </div>
+            <Helmet>
+                <title>Menu | Epicurean Eats</title>
+            </Helmet>
+            <Cover img={menuBg} title={'Our Menu'} subTitle={'would you like to try a dish?'}></Cover>
+            <SectionTitle title={'Todays Offer'} subTitle={"Don't Miss"}></SectionTitle>
+            <MenuAny title={'Offer'} item={offered}></MenuAny>
+            <Cover img={dessertBg} title={'desserts'} subTitle={' Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ex alias cupiditate distinctio pariatur itaque inventore aperiam, assumenda reiciendis molestiae?'}></Cover>
+            <MenuAny title={'Desserts'} item={dessert}></MenuAny>
+            <Cover img={pizzaBg} title={'Pizza'} subTitle={' Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ex alias cupiditate distinctio pariatur itaque inventore aperiam, assumenda reiciendis molestiae?'}></Cover>
+            <MenuAny title={'Pizza'} item={pizza}></MenuAny>
+            <Cover img={saladBg} title={'salad'} subTitle={' Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ex alias cupiditate distinctio pariatur itaque inventore aperiam, assumenda reiciendis molestiae?'}></Cover>
+            <MenuAny  title={'Salad'} item={salad}></MenuAny>
+            <Cover img={soupBg} title={'soup'} subTitle={' Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ex alias cupiditate distinctio pariatur itaque inventore aperiam, assumenda reiciendis molestiae?'}></Cover>
+            <MenuAny title={'Soup'} item={soup}></MenuAny>
+
+        </div>
     );
 };
 

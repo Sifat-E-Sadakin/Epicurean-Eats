@@ -9,7 +9,7 @@ const Navbar = () => {
         <li><Link to={`/menu`}>Menu</Link></li>
         <li><Link to={`/order/Salad`}>Order</Link></li>
        
-        <li><a>Item 3</a></li>
+        <li><Link to={'/login'}>Login</Link></li>
     </>
     return (
         <div className='container '>

@@ -7,7 +7,7 @@ const Home = () => {
 
     let location = useLocation();
 
-    let hide = location.pathname.includes('login')
+    let hide = location.pathname.includes('login') || location.pathname.includes('signUp')
     return (
         <div>
            { hide || <Navbar></Navbar>}

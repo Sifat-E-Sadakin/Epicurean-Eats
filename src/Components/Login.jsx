@@ -1,27 +1,35 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import { userAuth } from '../Providers/UserProvider';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
-    let {createUser} = useContext(userAuth);
-
-   
-
-    let [disabled , setDisabled] = useState(false)
-
-    let userRef= useRef(null)
+    let { signIn } = useContext(userAuth);
 
 
-    useEffect(()=>{
-        loadCaptchaEnginge(6); 
-    },[])
+
+    let [disabled, setDisabled] = useState(false)
+
+    let userRef = useRef(null)
+
+    let location = useLocation();
+    console.log(location);
+
+    let go = location.state?.from?.pathname || '/'
+
+    let navigate = useNavigate()
+
+
+    useEffect(() => {
+        loadCaptchaEnginge(6);
+    }, [])
 
     let submit = event => {
 
         event.preventDefault()
 
-        
+
 
         let email = event.target.email.value
         let password = event.target.password.value
@@ -29,22 +37,23 @@ const Login = () => {
         let validate = userRef.current.value
         // console.log(validate);
 
-        if(validateCaptcha(validate)){
+        if (validateCaptcha(validate)) {
             // console.log(email, password);
-            createUser(email, password)
-            .then(userCredential =>{
-                let user = userCredential.user;
-                console.log(user);
-            })
-            .catch(err=>{
-                console.log(err.message);
-            })
+            signIn(email, password)
+                .then(userCredential => {
+                    let user = userCredential.user;
+                    console.log(user);
+                    navigate(go)
+                })
+                .catch(err => {
+                    console.log(err.message);
+                })
         }
-        else{
+        else {
             return alert('invalid code')
         }
 
-        
+
 
     }
     return (
@@ -78,7 +87,7 @@ const Login = () => {
                                     <label className="label">
                                         <LoadCanvasTemplate />
                                     </label>
-                                    <input type="text" ref={userRef}  placeholder="Text Above" className="input input-bordered" />
+                                    <input type="text" ref={userRef} placeholder="Text Above" className="input input-bordered" />
 
                                 </div>
 
@@ -86,6 +95,9 @@ const Login = () => {
                                     <input disabled={disabled} type="submit" value={'Login'} className='btn btn-primary' />
                                 </div>
                             </form>
+                            <div className="form-control mt-6">
+                                <input disabled={disabled} type="submit" value={'Login With Google'} className='btn btn-primary' />
+                            </div>
                         </div>
                     </div>
                 </div>

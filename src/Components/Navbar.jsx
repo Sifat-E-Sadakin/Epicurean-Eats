@@ -1,19 +1,26 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { userAuth } from '../Providers/UserProvider';
+import useCart from '../Hooks/useCart';
 
 const Navbar = () => {
 
-    let {logOut}= useContext(userAuth);
+    let [cart] = useCart();
+
+    let { logOut } = useContext(userAuth);
 
     let navItem = <>
         <li><Link to={`/`}>Home</Link></li>
         <li><Link to={`/menu`}>Menu</Link></li>
         <li><Link to={`/order/Salad`}>Order</Link></li>
-       
+
         <li><Link to={'/login'}>Login</Link></li>
         <li><Link to={'/signUp'}>Sign Up</Link></li>
         <li><button onClick={logOut}>LogOut</button></li>
+        <li><button className="btn gap-2">
+            Inbox
+            <div className="badge badge-secondary">{cart? cart.length : '0'}</div>
+        </button></li>
     </>
     return (
         <div className='container '>
@@ -24,7 +31,7 @@ const Navbar = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                           {navItem}
+                            {navItem}
                         </ul>
                     </div>
                     <a className="btn btn-ghost normal-case text-xl">Epicurean Eats</a>

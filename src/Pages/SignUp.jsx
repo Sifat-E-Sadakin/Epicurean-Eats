@@ -4,19 +4,21 @@ import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
 
-    let {createUser} = useContext(userAuth);
+    let {createUser, update} = useContext(userAuth);
     let navigate = useNavigate();
     let submit = event =>{
 
         event.preventDefault();
 
         let name = event.target.name.value
+        let photo = event.target.photo.value
         let email = event.target.email.value
         let password = event.target.password.value
 
         console.log(name, email, password);
         createUser(email, password)
         .then(user=>{
+            update(name,photo)
             navigate('/')
         })
     }
@@ -37,6 +39,12 @@ const SignUp = () => {
                                         <span className="label-text">Name</span>
                                     </label>
                                     <input type="text" name='name' placeholder="Your Name" className="input input-bordered" />
+                                </div>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Photo</span>
+                                    </label>
+                                    <input type="text" name='photo' placeholder="Your Name" className="input input-bordered" />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">

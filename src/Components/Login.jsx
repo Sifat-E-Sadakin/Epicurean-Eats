@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import { userAuth } from '../Providers/UserProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
+import SocialLogin from './SocialLogin';
 
 const Login = () => {
 
@@ -95,9 +96,7 @@ const Login = () => {
                                     <input disabled={disabled} type="submit" value={'Login'} className='btn btn-primary' />
                                 </div>
                             </form>
-                            <div className="form-control mt-6">
-                                <input disabled={disabled} type="submit" value={'Login With Google'} className='btn btn-primary' />
-                            </div>
+                            <SocialLogin></SocialLogin>
                         </div>
                     </div>
                 </div>

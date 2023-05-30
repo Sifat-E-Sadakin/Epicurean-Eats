@@ -17,10 +17,10 @@ const Navbar = () => {
         <li><Link to={'/login'}>Login</Link></li>
         <li><Link to={'/signUp'}>Sign Up</Link></li>
         <li><button onClick={logOut}>LogOut</button></li>
-        <li><button className="btn gap-2">
-            Inbox
-            <div className="badge badge-secondary">{cart? cart.length : '0'}</div>
-        </button></li>
+        <li><Link to={'/dashboard'}><button className="btn gap-2">
+            Cart
+            <div className="badge badge-secondary">{cart ? cart.length : '0'}</div>
+        </button></Link></li>
     </>
     return (
         <div className='container '>

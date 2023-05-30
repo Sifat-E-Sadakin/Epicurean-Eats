@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { userAuth } from '../Providers/UserProvider';
 import { useNavigate } from 'react-router-dom';
+import SocialLogin from '../Components/SocialLogin';
 
 const SignUp = () => {
 
@@ -16,9 +17,21 @@ const SignUp = () => {
         let password = event.target.password.value
 
         console.log(name, email, password);
+        let info = {name,email}
         createUser(email, password)
         .then(user=>{
             update(name,photo)
+            fetch(`http://localhost:3000/users`,{
+                method: 'POST',
+                headers: {
+                    'content-type' : 'application/json'
+                },
+                body: JSON.stringify(info)
+            })
+            .then(res => res.json())
+            .then(data=>{
+                console.log(data);
+            })
             navigate('/')
         })
     }
@@ -65,6 +78,7 @@ const SignUp = () => {
                                     <input type="submit" value={'Sign Up'} className='btn btn-primary'/>
                                 </div>
                             </form>
+                            <SocialLogin></SocialLogin>
                         </div>
                     </div>
                 </div>

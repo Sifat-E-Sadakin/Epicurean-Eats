@@ -11,6 +11,8 @@ import OrderPage from './Pages/OrderPage';
 import Login from './Components/Login';
 import SignUp from './Pages/SignUp';
 import PrivateRoutes from './PrivateRoutes';
+import Dashboard from './Layout/Dashboard';
+import MyCart from './DComponents/MyCart';
 
 
 export const router = createBrowserRouter([
@@ -40,6 +42,18 @@ export const router = createBrowserRouter([
                 },
               ],
             },
+            {
+              path: 'dashboard',
+              element: <Dashboard></Dashboard>,
+              children: [
+                {
+                  path: 'myCart',
+                  element: <MyCart></MyCart>
+                }
+
+              ]
+              
+            }
           ]);
 
 

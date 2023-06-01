@@ -28,6 +28,17 @@ const DUsers = () => {
 
     }
 
+    let makeAdmin = person =>{
+        fetch(`http://localhost:3000/users/admin/${person._id}`,{
+            method: 'PATCH'
+        })
+        .then(res=> res.json())
+        .then(data=>{
+            refetch();
+            console.log(data);
+        })
+    }
+
 
     return (
         <div>
@@ -50,7 +61,9 @@ const DUsers = () => {
                             <th>{i+1}</th>
                             <th>{user.name}</th>
                             <td>{user.email}</td>
-                            <td> <button onClick={()=>makeAdmin(item._id)} className="btn btn-ghost"><FaUserShield className='text-xl'></FaUserShield> </button></td>
+                            <td>{user.role =='admin'? 'admin'
+                            :
+                            <button onClick={()=>makeAdmin(user)} className="btn btn-ghost"><FaUserShield className='text-xl'></FaUserShield> </button>}</td>
                             <td> <button onClick={()=>remove(item._id)} className="btn btn-ghost"><FaTrashAlt className='text-xl'></FaTrashAlt></button></td>
                         </tr>)}
                     

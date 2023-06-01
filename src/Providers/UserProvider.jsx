@@ -23,6 +23,24 @@ const UserProvider = ({children}) => {
             console.log(user);
             setUser(user);
             setLoading(false);
+
+            if(user){
+                fetch(`http://localhost:3000/jwt`,{
+                method: 'POST',
+                headers : {
+                    'content-type' : 'application/json'
+                },
+                body : JSON.stringify(user)
+            })
+            .then(res=> res.json())
+            .then(data =>{
+                console.log(data);
+                localStorage.setItem('WT', data.token)
+            })
+            }
+            else{
+                localStorage.removeItem('WT')
+            }
         })
 
         return ()=>{

@@ -1,10 +1,14 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { FaHome, FaCalendarAlt, FaWallet, FaShoppingCart, FaCommentAlt, FaCalendar, FaUtensils, FaBook, FaUsers } from 'react-icons/fa';
+import useAdmin from '../Hooks/useAdmin';
 
 const Dashboard = () => {
 
-    let isAdmin = true;
+    let checkLevel = useAdmin();
+    let level = checkLevel?.admin
+    let isAdmin = level
+    console.log(isAdmin);
     return (
         <div>
             <div className="drawer drawer-mobile">

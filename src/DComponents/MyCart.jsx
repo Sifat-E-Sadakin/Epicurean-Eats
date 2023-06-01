@@ -5,7 +5,11 @@ import { FaTrashAlt } from 'react-icons/fa';
 const MyCart = () => {
     let [cart, refetch ] = useCart()
     console.log(cart);
-    let total = cart.reduce((sum, item) => item.price + sum, 0)
+    let total
+    if(cart){
+       total = cart.reduce((sum, item) => item.price + sum, 0)
+    }
+  
 
     let remove = id =>{
         fetch(`http://localhost:3000/carts/${id}`,{
@@ -19,9 +23,9 @@ const MyCart = () => {
     }
     return (
         <div>
-            <p>my crat</p>
-            <p>total item {cart.length}</p>
-            <p>total price $ {total}</p>
+            <p>my cart</p>
+            <p>total item {cart && cart.length}</p>
+            <p>total price $ {cart && total}</p>
 
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">

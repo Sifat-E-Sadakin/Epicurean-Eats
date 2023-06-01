@@ -1,25 +1,49 @@
 import React from 'react';
 import { useContext } from 'react';
 import { userAuth } from '../Providers/UserProvider';
+import { FaGoogle } from 'react-icons/fa';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SocialLogin = () => {
 
-    let { google } = useContext(userAuth)
+    let { googlePopUp } = useContext(userAuth)
 
-    let googleSignIn = ()=>{
-        google()
-        .then(res=>{
-            console.log(res);
-        })
-        .catch(err=>{
-            console.log(err.message);
-        })
+    let location = useLocation();
+    // console.log(location);
+
+    let go = location.state?.from?.pathname || '/'
+
+    let navigate = useNavigate()
+
+
+    let googleSignIn = () => {
+        googlePopUp()
+            .then(res => {
+                console.log(res.user.email);
+                let info = {name: res.user.displayName, email: res.user.email}
+                console.log(info);
+                fetch(`http://localhost:3000/users`, {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(info)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                    })
+                navigate(go)
+            })
+            .catch(err => {
+                console.log(err.message);
+            })
     }
 
     return (
-        <div>
+        <div className='text-center my-4'>
             <button onClick={googleSignIn} className="btn btn-circle btn-outline">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                <FaGoogle></FaGoogle>
             </button>
         </div>
     );

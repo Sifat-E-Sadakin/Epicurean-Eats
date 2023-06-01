@@ -5,7 +5,7 @@ import SocialLogin from '../Components/SocialLogin';
 
 const SignUp = () => {
 
-    let {createUser, update} = useContext(userAuth);
+    let {createUser, update , googlePopUp} = useContext(userAuth);
     let navigate = useNavigate();
     let submit = event =>{
 

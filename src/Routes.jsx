@@ -13,6 +13,7 @@ import SignUp from './Pages/SignUp';
 import PrivateRoutes from './PrivateRoutes';
 import Dashboard from './Layout/Dashboard';
 import MyCart from './DComponents/MyCart';
+import DUsers from './DComponents/Dusers';
 
 
 export const router = createBrowserRouter([
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
                 {
                   path: 'myCart',
                   element: <MyCart></MyCart>
+                },
+                {
+                  path: 'users',
+                  element: <DUsers></DUsers>
                 }
 
               ]

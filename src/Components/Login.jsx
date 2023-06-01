@@ -15,7 +15,7 @@ const Login = () => {
     let userRef = useRef(null)
 
     let location = useLocation();
-    console.log(location);
+    // console.log(location);
 
     let go = location.state?.from?.pathname || '/'
 

@@ -31,7 +31,7 @@ const Reviews = () => {
               <div className='text-center '>
                 
                       {
-                        review.map(item => <SwiperSlide className='space-y-4'>
+                        review.map(item => <SwiperSlide key={item._id} className='space-y-4'>
                             <div className='flex justify-center'>
                             <Rating
                                 style={{ maxWidth: 180 }}

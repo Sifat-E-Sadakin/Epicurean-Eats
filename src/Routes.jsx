@@ -14,6 +14,9 @@ import PrivateRoutes from './PrivateRoutes';
 import Dashboard from './Layout/Dashboard';
 import MyCart from './DComponents/MyCart';
 import DUsers from './DComponents/Dusers';
+import AdminRoutes from './AdminRoutes';
+import AddItem from './DComponents/AddItem';
+import ManageItem from './DComponents/ManageItem';
 
 
 export const router = createBrowserRouter([
@@ -53,7 +56,15 @@ export const router = createBrowserRouter([
                 },
                 {
                   path: 'users',
-                  element: <DUsers></DUsers>
+                  element: <AdminRoutes><DUsers></DUsers></AdminRoutes>
+                },
+                {
+                  path: 'addItem',
+                  element: <AdminRoutes><AddItem></AddItem></AdminRoutes>
+                },
+                {
+                  path: 'manageItem',
+                  element: <AdminRoutes><ManageItem></ManageItem></AdminRoutes>
                 }
 
               ]

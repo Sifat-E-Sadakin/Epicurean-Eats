@@ -1,11 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { userAuth } from '../Providers/UserProvider';
 import useCart from '../Hooks/useCart';
 
 const Navbar = () => {
 
-    let [cart] = useCart();
+    let [cart, refetch] = useCart();
+    useEffect(()=>{
+        refetch();
+    },[])
 
     let { logOut } = useContext(userAuth);
 

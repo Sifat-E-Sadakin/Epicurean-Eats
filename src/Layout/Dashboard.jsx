@@ -6,14 +6,15 @@ import useAdmin from '../Hooks/useAdmin';
 const Dashboard = () => {
 
     let checkLevel = useAdmin();
-    let level = checkLevel?.admin
+    
+    let level = checkLevel?.isAdmin?.admin
     let isAdmin = level
-    console.log(isAdmin);
+    
     return (
         <div>
             <div className="drawer drawer-mobile">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content flex flex-col items-center justify-center">
+                <div className="drawer-content ">
                     
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
@@ -26,7 +27,7 @@ const Dashboard = () => {
                      
                        {isAdmin == true ? <>
                         <div className='flex items-center gap-3'><FaHome></FaHome>Admin Home</div>
-                        <div className='flex items-center gap-3'><FaUtensils></FaUtensils> Add Item</div>
+                        <NavLink to={'addItem'}><div className='flex items-center gap-3'><FaUtensils></FaUtensils> Add Item</div></NavLink>
                         <div className='flex items-center gap-3'><FaWallet></FaWallet>Manage Item</div>
                         <NavLink to={'myCart'}><div className='flex items-center gap-3'><FaBook></FaBook> Manage Book</div></NavLink>
 

@@ -1,11 +1,14 @@
 import React from 'react';
 import useCart from '../Hooks/useCart';
 import { FaTrashAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const MyCart = () => {
     let [cart, refetch ] = useCart()
+    refetch();
     console.log(cart);
     let total
+
     if(cart){
        total = cart.reduce((sum, item) => item.price + sum, 0)
     }
@@ -26,6 +29,7 @@ const MyCart = () => {
             <p>my cart</p>
             <p>total item {cart && cart.length}</p>
             <p>total price $ {cart && total}</p>
+            <Link to={'/dashboard/payment'}><button className='btn btn-primary'>Pay Now</button></Link>
 
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">

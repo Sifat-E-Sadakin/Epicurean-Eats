@@ -17,6 +17,7 @@ import DUsers from './DComponents/Dusers';
 import AdminRoutes from './AdminRoutes';
 import AddItem from './DComponents/AddItem';
 import ManageItem from './DComponents/ManageItem';
+import Payment from './DComponents/Payment';
 
 
 export const router = createBrowserRouter([
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
                 {
                   path: 'myCart',
                   element: <MyCart></MyCart>
+                },
+                {
+                  path: 'payment',
+                  element: <Payment></Payment>
                 },
                 {
                   path: 'users',

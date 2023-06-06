@@ -14,7 +14,7 @@ const useCart = () => {
     const { isLoading, isError, data : cart= [], error, refetch } = useQuery({
         queryKey: ['carts', user?.email],
         queryFn: async()=>{
-            let res = await fetch(`http://localhost:3000/carts?email=${user?.email}`,{
+            let res = await fetch(`https://epicurean-eats-server.vercel.app/carts?email=${user?.email}`,{
                 headers : {
                     'authorization' : `bearer ${token}`
                 }

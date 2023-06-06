@@ -11,7 +11,7 @@ const useAxiosSecure = () => {
   const navigate = useNavigate(); 
 
   const axiosSecure = axios.create({
-    baseURL: 'http://localhost:3000', 
+    baseURL: 'https://epicurean-eats-server.vercel.app', 
   });
 
   useEffect(() => {

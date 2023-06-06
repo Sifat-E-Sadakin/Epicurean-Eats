@@ -11,7 +11,7 @@ const SingleCard = ({food }) => {
     let addToCart = (food) =>{
         let cartItem = {itemId: _id, name, price, image, email: user.email}
 
-        fetch('http://localhost:3000/carts',{
+        fetch('https://epicurean-eats-server.vercel.app/carts',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

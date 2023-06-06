@@ -2,13 +2,17 @@ import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { userAuth } from '../Providers/UserProvider';
 import useCart from '../Hooks/useCart';
+import useAdmin from '../Hooks/useAdmin';
 
 const Navbar = () => {
 
+    let {isAdmin} = useAdmin()
+    let state = isAdmin?.admin
+
     let [cart, refetch] = useCart();
-    useEffect(()=>{
+    useEffect(() => {
         refetch();
-    },[])
+    }, [])
 
     let { logOut } = useContext(userAuth);
 
@@ -20,10 +24,17 @@ const Navbar = () => {
         <li><Link to={'/login'}>Login</Link></li>
         <li><Link to={'/signUp'}>Sign Up</Link></li>
         <li><button onClick={logOut}>LogOut</button></li>
-        <li><Link to={'/dashboard'}><button className="btn gap-2">
-            Cart
-            <div className="badge badge-secondary">{cart ? cart.length : '0'}</div>
-        </button></Link></li>
+        {
+            state ?
+                <li><Link to={'/dashboard/adminHome'}><button className="btn gap-2">
+                    Cart
+                    <div className="badge badge-secondary">{cart ? cart.length : '0'}</div>
+                </button></Link></li> :
+                <li><Link to={'/dashboard/userHome'}><button className="btn gap-2">
+                    Cart
+                    <div className="badge badge-secondary">{cart ? cart.length : '0'}</div>
+                </button></Link></li>
+        }
     </>
     return (
         <div className='container '>

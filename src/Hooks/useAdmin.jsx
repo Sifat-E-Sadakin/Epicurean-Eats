@@ -4,12 +4,14 @@ import { userAuth } from "../Providers/UserProvider";
 
 const useAdmin = () => {
 
-    let {user} = useContext(userAuth)
+    let {user, loading} = useContext(userAuth)
+    console.log(loading);
 
     const { data : isAdmin, refetch, isLoading : isAdminLoading } = useQuery({
         queryKey: ['isAdmin', user?.email],
+        enabled: !loading,
         queryFn: async ()=>{
-            let res = await fetch(`http://localhost:3000/users/isadmin?email=${user?.email}`)
+            let res = await fetch(`https://epicurean-eats-server.vercel.app/users/isadmin?email=${user?.email}`)
 
             return res.json()
             

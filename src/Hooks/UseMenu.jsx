@@ -1,5 +1,7 @@
 import { useQueries, useQuery } from "@tanstack/react-query";
+import { useContext } from "react";
 import { useEffect, useState } from "react";
+import { userAuth } from "../Providers/UserProvider";
 
 let UseMenu = ()=>{
     // let [menu , setMenu] = useState([]);
@@ -17,10 +19,13 @@ let UseMenu = ()=>{
       
 
     // },[])
+
+   
     let {data: menu = [], isLoading: loading, refetch} = useQuery({
         queryKey : ['menu'],
+        // enabled: !loading,
         queryFn : async ()=>{
-            let res = await fetch('http://localhost:3000/menu')
+            let res = await fetch('https://epicurean-eats-server.vercel.app/menu')
             return res.json();
         }
     })

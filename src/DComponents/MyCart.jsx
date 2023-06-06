@@ -15,7 +15,7 @@ const MyCart = () => {
   
 
     let remove = id =>{
-        fetch(`http://localhost:3000/carts/${id}`,{
+        fetch(`https://epicurean-eats-server.vercel.app/carts/${id}`,{
             method: 'DELETE'
         })
         .then(res=> res.json())

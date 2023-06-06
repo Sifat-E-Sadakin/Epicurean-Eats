@@ -23,9 +23,10 @@ const UserProvider = ({children}) => {
             console.log(user);
             setUser(user);
             setLoading(false);
+           
 
             if(user){
-                fetch(`http://localhost:3000/jwt`,{
+                fetch(`https://epicurean-eats-server.vercel.app/jwt`,{
                 method: 'POST',
                 headers : {
                     'content-type' : 'application/json'
@@ -36,6 +37,7 @@ const UserProvider = ({children}) => {
             .then(data =>{
                 console.log(data);
                 localStorage.setItem('WT', data.token)
+               
             })
             }
             else{

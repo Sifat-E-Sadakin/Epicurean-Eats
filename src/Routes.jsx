@@ -18,6 +18,8 @@ import AdminRoutes from './AdminRoutes';
 import AddItem from './DComponents/AddItem';
 import ManageItem from './DComponents/ManageItem';
 import Payment from './DComponents/Payment';
+import UserHome from './DComponents/UserHome';
+import AdminHome from './DComponents/AdminHome';
 
 
 export const router = createBrowserRouter([
@@ -52,6 +54,10 @@ export const router = createBrowserRouter([
               element: <Dashboard></Dashboard>,
               children: [
                 {
+                  path: 'userHome',
+                  element: <UserHome></UserHome>
+                },
+                {
                   path: 'myCart',
                   element: <MyCart></MyCart>
                 },
@@ -62,6 +68,10 @@ export const router = createBrowserRouter([
                 {
                   path: 'users',
                   element: <AdminRoutes><DUsers></DUsers></AdminRoutes>
+                },
+                {
+                  path: 'adminHome',
+                  element: <AdminRoutes><AdminHome></AdminHome></AdminRoutes>
                 },
                 {
                   path: 'addItem',

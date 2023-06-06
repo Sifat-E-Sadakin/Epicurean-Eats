@@ -3,16 +3,30 @@ import SectionTitle from '../Components/SectionTitle';
 import CheckOut from './CheckOut';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
+import useCart from '../Hooks/useCart';
+import { useState } from 'react';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import { useEffect } from 'react';
 
-const stripePromise = loadStripe('pk_test_51NF9F3AeyKVLGcRPBhWe6OHkhCxZkVKQLdCbgkbRLuZ4BfMtopLZE8nOZmT8zH3XZP8mzQebKe4mccIbdvsxOZ0000JZcxLRgv');
+const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT);
 
 const Payment = () => {
+
+    let [cart] = useCart();
+   
+  
+    let total = cart.reduce((sum, item )=> item.price + sum, 0  )
+    // console.log(total);
+    let price = parseFloat(total.toFixed(2));
+    // console.log(price);
+
+   
     return (
         <div>
             <SectionTitle title={'Payment'}></SectionTitle>
             
             <Elements stripe={stripePromise}>
-                <CheckOut></CheckOut>
+                <CheckOut price={price}></CheckOut>
             </Elements>
 
         </div>
